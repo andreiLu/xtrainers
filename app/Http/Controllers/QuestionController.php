@@ -5,22 +5,28 @@ namespace Xtrainers\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Xtrainers\User;
+use Xtrainers\Topic;
 
 class QuestionController extends HomeController
 {
     /**
      * Store a new question.
      *
-     * @param  Request  $request
+     * @param  Request $request
      * @return Response
      */
     public function store(Request $request)
     {
-        $name = $request->input('data');
+        $data = $request->input('data');
+        $user_id = $request->user()->id;
 
-        $user = $request->user();
+        $topic = new Topic();
 
-        dd($user);
-
+        $topic->topic_author_id = $user_id;
+        $topic->topic_up_votes = 0;
+        $topic->topic_down_votes = 0;
+        $topic->topic_title = $data['title'];
+        $topic->topic_content = $data['body'];
+        $topic->save();
     }
 }
