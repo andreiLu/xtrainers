@@ -8,13 +8,14 @@
                 </div>
                 <div class="story-content">
                     <div class="question-title">
-                        <input type="text" value="" placeholder="Question title">
+                        <input type="text" value="" placeholder="Question title" v-model="questionTitle">
                     </div>
                     <div class="question-content">
-                        <textarea rows="4" cols="150" class="question-body" placeholder="Question"></textarea>
+                        <textarea rows="4" cols="150" class="question-body" placeholder="Question"
+                                  v-model="questionBody"></textarea>
                     </div>
 
-                    <button class="submit-question" :click="submitQuestion">Submit</button>
+                    <button class="submit-question" v-on:click="submitQuestion">Submit</button>
                 </div>
             </div>
 
@@ -25,6 +26,30 @@
 <script>
     export default {
         name: "NewQuestionComponent",
+        data: function() {
+            return {
+                questionTitle: '',
+                questionBody: ''
+            }
+        },
+        mounted() {
+        },
+        methods: {
+            submitQuestion: function () {
+
+                alert('hereeee')
+
+                axios.post( 'createQuestion', {
+                    data: {
+                        title: this.questionTitle,
+                        body: this.questionBody
+                    }
+                } );
+
+                console.log(this.questionTitle);
+                console.log(this.questionBody)
+            }
+        }
     }
 </script>
 

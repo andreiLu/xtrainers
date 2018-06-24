@@ -1,6 +1,6 @@
 <?php
 
-namespace xxx\Providers;
+namespace Xtrainers\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -14,7 +14,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'xxx\Http\Controllers';
+    protected $namespace = 'Xtrainers\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.

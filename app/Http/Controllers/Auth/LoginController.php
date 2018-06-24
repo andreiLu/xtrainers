@@ -1,8 +1,8 @@
 <?php
 
-namespace xxx\Http\Controllers\Auth;
+namespace Xtrainers\Http\Controllers\Auth;
 
-use xxx\Http\Controllers\Controller;
+use Xtrainers\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller

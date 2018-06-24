@@ -1,9 +1,9 @@
 <?php
 
-namespace xxx\Http\Controllers\Auth;
+namespace Xtrainers\Http\Controllers\Auth;
 
-use xxx\User;
-use xxx\Http\Controllers\Controller;
+use Xtrainers\User;
+use Xtrainers\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -59,7 +59,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \xxx\User
+     * @return \Xtrainers\User
      */
     protected function create(array $data)
     {

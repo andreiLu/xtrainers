@@ -1,6 +1,6 @@
 <?php
 
-namespace xxx;
+namespace Xtrainers;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;

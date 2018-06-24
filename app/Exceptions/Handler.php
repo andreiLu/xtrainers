@@ -1,6 +1,6 @@
 <?php
 
-namespace xxx\Exceptions;
+namespace Xtrainers\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;

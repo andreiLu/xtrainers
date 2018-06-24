@@ -1,6 +1,6 @@
 <?php
 
-namespace xxx\Http\Middleware;
+namespace Xtrainers\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
