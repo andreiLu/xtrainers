@@ -13,7 +13,6 @@ class QuestionController extends HomeController
      * Store a new question.
      *
      * @param  Request $request
-     * @return Response
      */
     public function store(Request $request)
     {
@@ -27,6 +26,14 @@ class QuestionController extends HomeController
         $topic->topic_down_votes = 0;
         $topic->topic_title = $data['title'];
         $topic->topic_content = $data['body'];
+
         $topic->save();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Collection|Topic[]
+     */
+    public function all() {
+        return Topic::all();
     }
 }

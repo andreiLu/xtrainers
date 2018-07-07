@@ -5,7 +5,7 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-const User = {template: '<div>{{ $route.params.username }}</div>'}
+// const User = {template: '<div>{{ $route.params.username }}</div>'}
 
 const router = new VueRouter({
     mode: 'history',
@@ -22,6 +22,7 @@ const router = new VueRouter({
         {path: '/ask-question', component: require('./components/NewQuestionComponent')},
         {path: '/home', component: require('./components/HomeComponent')},
         {path: '/search', component: require('./components/SearchComponent')},
+        {path: '/question', component: require('./components/QuestionsListComponent')},
     ]
 })
 

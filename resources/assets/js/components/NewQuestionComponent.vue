@@ -36,18 +36,12 @@
         },
         methods: {
             submitQuestion: function () {
-
-                alert('hereeee')
-
                 axios.post( 'createQuestion', {
                     data: {
                         title: this.questionTitle,
                         body: this.questionBody
                     }
-                } );
-
-                console.log(this.questionTitle);
-                console.log(this.questionBody)
+                } )
             }
         }
     }

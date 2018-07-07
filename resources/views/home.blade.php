@@ -7,7 +7,7 @@
         <div class="left-nav-menu">
             <span class="left-menu-item">Top Stories</span>
             <span class="left-menu-item">Saved Questions</span>
-            <span class="left-menu-item">New Questions</span>
+            <router-link class="left-menu-item" to="/question">New Questions</router-link>
             <span class="left-menu-item">Bodybuilding</span>
             <span class="left-menu-item">Fitness</span>
             <span class="left-menu-item">Nutrition</span>
