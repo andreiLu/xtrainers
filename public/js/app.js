@@ -14286,7 +14286,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
-module.exports = __webpack_require__(64);
+module.exports = __webpack_require__(69);
 
 
 /***/ }),
@@ -14319,7 +14319,7 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
     //         {path: ':username', name: 'user', component: User}
     //     ]
     // },
-    { path: '/ask-question', component: __webpack_require__(43) }, { path: '/home', component: __webpack_require__(49) }, { path: '/search', component: __webpack_require__(54) }, { path: '/question', component: __webpack_require__(59) }]
+    { path: '/ask-question', component: __webpack_require__(43) }, { path: '/home', component: __webpack_require__(49) }, { path: '/search', component: __webpack_require__(54) }, { path: '/question', component: __webpack_require__(59) }, { path: '/calendar', component: __webpack_require__(64) }]
 });
 
 new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
@@ -50937,7 +50937,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.questions-list[data-v-e4dc462e]{\n    margin: 40px;\n}\n.single-question[data-v-e4dc462e]{\n    border: 1px dashed #ffffff52;\n    padding: 15px;\n    margin-bottom: 20px;\n    max-width: 70%;\n}\n.topic-title[data-v-e4dc462e]{\n    font-size: 40px;\n    color: white;\n    font-style: normal;\n}\n.topic-content[data-v-e4dc462e]{\n    font-size: 20px;\n    color: white;\n    font-style: normal;\n}\n\n", ""]);
 
 // exports
 
@@ -50948,6 +50948,14 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -50985,12 +50993,23 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    _vm._l(_vm.topics, function(topic) {
-      return _c("p", [_vm._v(" " + _vm._s(topic.topic_title) + " ")])
-    })
-  )
+  return _c("div", { staticClass: "right-section main-section" }, [
+    _c(
+      "div",
+      { staticClass: "questions-list" },
+      _vm._l(_vm.topics, function(topic) {
+        return _c("div", { staticClass: "single-question" }, [
+          _c("p", { staticClass: "topic-title" }, [
+            _vm._v(" " + _vm._s(topic.topic_title) + " ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "topic-content" }, [
+            _c("p", [_vm._v(_vm._s(topic.topic_content))])
+          ])
+        ])
+      })
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -51004,6 +51023,171 @@ if (false) {
 
 /***/ }),
 /* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(65)
+}
+var normalizeComponent = __webpack_require__(4)
+/* script */
+var __vue_script__ = __webpack_require__(67)
+/* template */
+var __vue_template__ = __webpack_require__(68)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-063d6978"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\CalendarComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-063d6978", Component.options)
+  } else {
+    hotAPI.reload("data-v-063d6978", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 65 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(66);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("1495533b", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-063d6978\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CalendarComponent.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-063d6978\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CalendarComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 66 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.single-day[data-v-063d6978]{\n    float: left;\n    margin: 20px;\n    font-weight: bold;\n}\n.week-day[data-v-063d6978] {\n    font-size: 25px;\n    color: red;\n    text-align: center;\n}\n.week-date[data-v-063d6978]{\n    font-size: 25px;\n    color: white;\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 67 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "CalendarComponent",
+    data: function data() {
+        return {
+            weekDays: ''
+        };
+    },
+    methods: {
+        getCalendar: function getCalendar() {
+            var self = this;
+
+            axios.get('get-calendar').then(function (response) {
+                self.weekDays = response.data;
+            }).catch(function (error) {
+                resultElement.innerHTML = generateErrorHTMLOutput(error);
+            });
+        }
+    },
+    mounted: function mounted() {
+        this.getCalendar();
+    }
+});
+
+/***/ }),
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "week-days" },
+    _vm._l(_vm.weekDays, function(singleDay) {
+      return _c("div", { staticClass: "single-day" }, [
+        _c("p", { staticClass: "week-day" }, [
+          _vm._v(" " + _vm._s(singleDay.day) + " ")
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "week-date" }, [
+          _vm._v(" " + _vm._s(singleDay.date) + " ")
+        ])
+      ])
+    })
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-063d6978", module.exports)
+  }
+}
+
+/***/ }),
+/* 69 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

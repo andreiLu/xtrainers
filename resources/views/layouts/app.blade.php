@@ -54,7 +54,7 @@
                                 <router-link class="menu-item" to="/home">home</router-link>
                                 <router-link class="menu-item" to="/ask-question">Ask</router-link>
                                 <router-link class="menu-item" to="/search">search</router-link>
-                                <span class="menu-item">calendar</span>
+                                <router-link class="menu-item" to="/calendar">calendar</router-link>
                                 <span class="menu-item">nutrition</span>
                                 <span class="menu-item">fit board</span>
                                 <span class="menu-item">membership</span>

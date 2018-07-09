@@ -15,7 +15,6 @@
         <div id="app">
             <router-link to="/">Go to Foo</router-link>
             <router-link to="/about">Gsdfsdfo to Foo</router-link>
-            {{--<router-view class="view"></router-view>--}}
         </div>
         <script src="/js/app.js"></script>
     </body>

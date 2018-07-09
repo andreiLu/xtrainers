@@ -19,7 +19,7 @@ class CreateTopicsTable extends Migration
             $table->integer('topic_up_votes');
             $table->integer('topic_down_votes');
             $table->string('topic_title');
-            $table->string('topic_content');
+            $table->longText('topic_content');
             $table->timestamps();
         });
     }

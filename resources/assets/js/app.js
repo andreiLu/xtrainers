@@ -23,6 +23,7 @@ const router = new VueRouter({
         {path: '/home', component: require('./components/HomeComponent')},
         {path: '/search', component: require('./components/SearchComponent')},
         {path: '/question', component: require('./components/QuestionsListComponent')},
+        {path: '/calendar', component: require('./components/CalendarComponent')},
     ]
 })
 
