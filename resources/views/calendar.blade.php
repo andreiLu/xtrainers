@@ -28,6 +28,15 @@
                 echo '<div class="single-day">';
                 echo '<p class="week-day">' . $day['day'] . '</p>';
                 echo '<p class="week-date">' . $day['date'] . '</p>';
+
+                foreach ( $day['classes'] as $class ) {
+					echo '<div class="single-day">';
+					echo '<p class="class-title">' . $class->title . '</p>';
+					echo '<p class="class-day">' . $class->day . '</p>';
+					echo '<p class="class-time">' . $class->time . '</p>';
+					echo '</div>';
+                }
+
                 echo '</div>';
             }
 

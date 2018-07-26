@@ -6,10 +6,14 @@
         <h1>Add a new class!</h1>
 
 
-        {{ Form::open(array('url' => 'handle-add-class'))  }}
+        {{--{{ Form::open(array('url' => 'handle-add-class'))  }}--}}
+
+        <?php echo Form::open(['route' => 'user.preferences.update']) ?>
 
         {{ Form::label('clas_title', 'Class Title') }}
         {{ Form::input('text', 'class_title', '', ['class' => 'input-title']) }}
+        {{ Form::input('date', 'class_date', '', ['class' => 'input-title']) }}
+        {{ Form::input('time', 'class_time', '', ['class' => 'input-title']) }}
 
         {{ Form::submit('Submit!')  }}
 

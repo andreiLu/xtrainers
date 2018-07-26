@@ -27,4 +27,16 @@ Route::get('/calendar', 'CalendarController@getCalendar');
 
 Route::get('/add-class', 'AddClassController@newClass');
 
-Route::get('/handle-add-class', 'AddClassController@handleRequest');
+//Route::post('/add-class', 'AddClassController@test');
+
+Route::post('/add-class-data',[
+	'as' => 'user.preferences.update',
+	'uses' => 'AddClassController@test'
+]);
+
+
+//Route::get('/add-class', [
+//	'uses' => 'AddClassController@newClass'
+//]);
+
+//Route::get('/handle-add-class', 'AddClassController@handleRequest');
