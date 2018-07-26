@@ -67,7 +67,9 @@ class CalendarController extends Controller
             $weekDays[] = $dayData;
         }
 
-        return $weekDays;
+        return view( 'calendar', ['weekDays' => $weekDays] );
+
+//        return $weekDays;
     }
 
 }

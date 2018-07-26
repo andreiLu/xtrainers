@@ -48,7 +48,7 @@
         border: 1px dashed #ffffff52;
         padding: 15px;
         margin-bottom: 20px;
-        max-width: 70%;
+        max-width: 70%  ;
     }
 
     .topic-title{

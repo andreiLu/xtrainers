@@ -19,11 +19,11 @@ const router = new VueRouter({
         //         {path: ':username', name: 'user', component: User}
         //     ]
         // },
-        {path: '/ask-question', component: require('./components/NewQuestionComponent')},
-        {path: '/home', component: require('./components/HomeComponent')},
-        {path: '/search', component: require('./components/SearchComponent')},
-        {path: '/question', component: require('./components/QuestionsListComponent')},
-        {path: '/calendar', component: require('./components/CalendarComponent')},
+        // {path: '/ask-question', component: require('./components/NewQuestionComponent')},
+        // {path: '/home', component: require('./components/HomeComponent')},
+        // {path: '/search', component: require('./components/SearchComponent')},
+        // {path: '/question', component: require('./components/QuestionsListComponent')},
+        // {path: '/calendar', component: require('./components/CalendarComponent')},
     ]
 })
 
