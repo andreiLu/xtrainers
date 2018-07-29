@@ -1,27 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="main-content">
+<div class="main-content">
 
-        <div class="center-content">
-            <h1 class="class-headline">Add a new class!</h1>
+    <div class="center-content">
+        <h1 class="class-headline">Add a new club!</h1>
 
-            <div class="form-container">
-                {{ Form::open(['route' => 'user.preferences.update']) }}
-                {{ Form::label('clas_title', 'Class Title', ['class' => 'custom-label']) }}
-                {{ Form::input('text', 'class_title', '', ['class' => 'input-title']) }}
-                {{ Form::label('clas_title', 'Class Date', ['class' => 'custom-label']) }}
-                {{ Form::input('date', 'class_date', '', ['class' => 'input-title']) }}
-                {{ Form::label('clas_title', 'Class Time', ['class' => 'custom-label']) }}
-                {{ Form::input('time', 'class_time', '', ['class' => 'input-title']) }}
-                {{ Form::label('clas_title', 'Max allowed students', ['class' => 'custom-label']) }}
-                {{ Form::input('number', 'class_students_number', '', ['class' => 'input-title']) }}
-                {{ Form::submit('Submit!', ['class' => 'submit-button'])  }}
-                {{ Form::close() }}
-            </div>
+        <div class="form-container">
+            {{ Form::open(['route' => 'user.add.club']) }}
+            {{ Form::label('club_title', 'Club Name', ['class' => 'custom-label']) }}
+            {{ Form::input('text', 'club_title', '', ['class' => 'input-title']) }}
+            {{ Form::label('club_address', 'Club Address', ['class' => 'custom-label']) }}
+            {{ Form::input('text', 'club_address', '', ['class' => 'input-title']) }}
+            {{ Form::submit('Submit!', ['class' => 'submit-button'])  }}
+            {{ Form::close() }}
         </div>
-
     </div>
+
+</div>
 @endsection
 
 <style>

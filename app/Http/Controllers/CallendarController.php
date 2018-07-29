@@ -71,7 +71,7 @@ class CalendarController extends Controller {
 	}
 
 	public function getClassesOfTheDay( $weekDays ) {
-		$classes = TeacherClass::all();
+		$classes = TeacherClass::where( 'teacher_id', \Auth::user()->id )->get();
 
 		foreach ( $weekDays as $key => $weekDay ) {
 			$weekDay['classes'] = $classes->where( 'day', $weekDay['date'] )->all();

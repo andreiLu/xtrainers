@@ -4,21 +4,22 @@
     <div class="main-content">
 
         <div class="center-content">
-            <h1 class="class-headline">Add a new class!</h1>
 
-            <div class="form-container">
-                {{ Form::open(['route' => 'user.preferences.update']) }}
-                {{ Form::label('clas_title', 'Class Title', ['class' => 'custom-label']) }}
-                {{ Form::input('text', 'class_title', '', ['class' => 'input-title']) }}
-                {{ Form::label('clas_title', 'Class Date', ['class' => 'custom-label']) }}
-                {{ Form::input('date', 'class_date', '', ['class' => 'input-title']) }}
-                {{ Form::label('clas_title', 'Class Time', ['class' => 'custom-label']) }}
-                {{ Form::input('time', 'class_time', '', ['class' => 'input-title']) }}
-                {{ Form::label('clas_title', 'Max allowed students', ['class' => 'custom-label']) }}
-                {{ Form::input('number', 'class_students_number', '', ['class' => 'input-title']) }}
-                {{ Form::submit('Submit!', ['class' => 'submit-button'])  }}
-                {{ Form::close() }}
+            <h1 style="padding: 15px 0 15px 12px;">Available users</h1>
+
+            <div class="users-list">
+                @foreach ($users as $user)
+                    <div class="user-data">
+                        <span class="user-name">{{$user->name}}</span>
+                        <span class="user-role">subscriber</span>
+                        <span>
+                            <a href="{{url('make-trainer/' . $user->id)}}" class="make-trainer">Make it trainer</a>
+                        </span>
+                    </div>
+                @endforeach
+
             </div>
+
         </div>
 
     </div>
@@ -88,8 +89,16 @@
         font-size: 16px;
     }
 
-    .input-title{
-        display:block;
+    .user-data {
+        padding: 30px;
+    }
+
+    .user-name, .user-role {
+        padding: 15px 0 15px 12px;
+    }
+
+    .make-trainer{
+        /*display:block;*/
         width: 300px;
         padding: 15px 0 15px 12px;
         font-family: "Arvo";

@@ -19,6 +19,7 @@
                 <span class="left-menu-item">Nutrition</span>
                 <span class="left-menu-item">Recuperation</span>
                 <span class="left-menu-item">Sport performance</span>
+                <a href="{{url('/add-class')}}" class="left-menu-item">Add class</a>
             </div>
         </div>
         <div class="week-days">
@@ -34,6 +35,7 @@
 					echo '<p class="class-title">' . $class->title . '</p>';
 					echo '<p class="class-day">' . $class->day . '</p>';
 					echo '<p class="class-time">' . $class->time . '</p>';
+					echo '<p class="class-number">' . $class->students_number . '</p>';
 					echo '</div>';
                 }
 

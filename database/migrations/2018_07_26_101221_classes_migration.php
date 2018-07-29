@@ -16,6 +16,7 @@ class ClassesMigration extends Migration {
 			$table->string( 'title' );
 			$table->date( 'day' );
 			$table->time( 'time' );
+			$table->integer( 'students_number' );
 			$table->string( 'teacher_id' );
 			$table->rememberToken();
 			$table->timestamps();

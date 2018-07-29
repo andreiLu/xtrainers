@@ -13,6 +13,16 @@
             <span class="left-menu-item">Nutrition</span>
             <span class="left-menu-item">Recuperation</span>
             <span class="left-menu-item">Sport performance</span>
+            @if ( ! $isSubscriber )
+                <a href="{{url('/all-clubs')}}" class="left-menu-item">View all clubs</a>
+                <a href="{{url('/add-class')}}" class="left-menu-item">Add class</a>
+            @endif
+
+            @if ( $isAdmin )
+                <a href="{{url('/add-trainer')}}" class="left-menu-item">Add trainer</a>
+                <a href="{{url('/add-club')}}" class="left-menu-item">Add club</a>
+            @endif
+
         </div>
     </div>
     <router-view class="view"></router-view>

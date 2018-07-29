@@ -23,6 +23,24 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('home',
+            array(
+                'isSubscriber' => $this->isSubscriber(),
+                'isAdmin' => $this->isAdmin()
+            )
+        );
+    }
+
+    public function isSubscriber()
+    {
+        $role = \Auth::user()->roles()->first();
+
+        return $role->getSubscriberRoleId() === $role->role_id;
+    }
+
+    public function isAdmin() {
+        $role = \Auth::user()->roles()->first();
+
+        return $role->getAdminRoleId() === $role->role_id;
     }
 }
