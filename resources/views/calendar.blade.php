@@ -2,12 +2,6 @@
 
 @section('content')
 
-    <?php
-
-//            dd($weekDays)
-
-    ?>
-
     <div class="main-content">
         <div class="left-section">
             <div class="left-nav-menu">
@@ -31,7 +25,7 @@
                 echo '<p class="week-date">' . $day['date'] . '</p>';
 
                 foreach ( $day['classes'] as $class ) {
-					echo '<div class="single-day">';
+					echo '<div class="single-class">';
 					echo '<p class="class-title">' . $class->title . '</p>';
 					echo '<p class="class-day">' . $class->day . '</p>';
 					echo '<p class="class-time">' . $class->time . '</p>';
@@ -92,6 +86,13 @@
     .story-category {
         margin-bottom: 30px;
         font-size: 20px;
+    }
+
+    .single-class {
+        border: 1px dashed white;
+        padding: 5px;
+        margin-bottom: 10px;
+        border-radius: 5px;
     }
 
     .single-day{

@@ -51,9 +51,9 @@
                         @else
 
                             <div class="my-menu">
-                                <router-link class="menu-item" to="/home">home</router-link>
-                                <router-link class="menu-item" to="/ask-question">Ask</router-link>
-                                <router-link class="menu-item" to="/search">search</router-link>
+                                {{--<router-link class="menu-item" to="/home">home</router-link>--}}
+                                <a href="{{url('new-question')}}" class="menu-item">Ask</a>
+                                {{--<router-link class="menu-item" to="/search">search</router-link>--}}
                                 {{--<router-link class="menu-item" to="/calendar">calendar</router-link>--}}
                                 <a href="/calendar" class="menu-item">calendar</a>
                                 <span class="menu-item">nutrition</span>

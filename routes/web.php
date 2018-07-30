@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/new-question', 'QuestionController@newQuestion');
+
 Route::post('/createQuestion', 'QuestionController@store');
 
 Route::get('/all-questions', 'QuestionController@all');
@@ -47,5 +49,12 @@ Route::post('/add-club-data',[
 	'as' => 'user.add.club',
 	'uses' => 'ClubController@createNewClub'
 ]);
+
+Route::post('/add-question-data',[
+	'as' => 'user.new.question',
+	'uses' => 'QuestionController@store'
+]);
+
+
 
 Route::get('make-trainer/{id}', 'TrainerController@createNewTrainer');

@@ -8,8 +8,14 @@
 
             @foreach($clubs as $club)
                 <div class="club-row">
-                    <span class="club-name">{{$club->name}}</span>
-                    <span class="club-address">{{$club->address}}</span>
+                    <div class="single-row">
+                        <p>title</p>
+                        <p class="club-name">{{$club->name}}</p>
+                    </div>
+                    <div class="single-row">
+                        <p>address</p>
+                        <p class="club-address">{{$club->address}}</p>
+                    </div>
                 </div>
             @endforeach
         </div>
@@ -101,5 +107,11 @@
         position: relative;
         font-size: 13px;
     }
+
+    .club-row {
+        padding: 20px;
+        padding-left: 0;
+    }
+
 
 </style>
