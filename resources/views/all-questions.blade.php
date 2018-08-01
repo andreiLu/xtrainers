@@ -5,14 +5,14 @@
 
     <div class="left-section">
         <div class="left-nav-menu">
-            <span class="left-menu-item">Top Stories</span>
-            <span class="left-menu-item">Saved Questions</span>
+            {{--<span class="left-menu-item">Top Stories</span>--}}
+            {{--<span class="left-menu-item">Saved Questions</span>--}}
             <a class="left-menu-item" href="{{url('new-question')}}">New Question</a>
-            <span class="left-menu-item">Bodybuilding</span>
-            <span class="left-menu-item">Fitness</span>
-            <span class="left-menu-item">Nutrition</span>
-            <span class="left-menu-item">Recuperation</span>
-            <span class="left-menu-item">Sport performance</span>
+            {{--<span class="left-menu-item">Bodybuilding</span>--}}
+            {{--<span class="left-menu-item">Fitness</span>--}}
+            {{--<span class="left-menu-item">Nutrition</span>--}}
+            {{--<span class="left-menu-item">Recuperation</span>--}}
+            {{--<span class="left-menu-item">Sport performance</span>--}}
             {{--@if ( ! $isSubscriber )--}}
             {{--<a href="{{url('/all-clubs')}}" class="left-menu-item">View all clubs</a>--}}
             {{--<a href="{{url('/add-class')}}" class="left-menu-item">Add class</a>--}}

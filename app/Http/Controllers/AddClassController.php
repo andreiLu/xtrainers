@@ -29,9 +29,19 @@ class AddClassController extends Controller
         $model->teacher_id = $request->user()->id;
         $model->day = $request->post('class_date');
         $model->time = $request->post('class_time');
+        $model->end_time = $request->post('class_end_time');
         $model->students_number = $request->post('class_students_number');
+        $model->enrolled_students = 0;
         $model->save();
 
         return redirect('calendar');
+    }
+
+    public function subscribeToClass( $classId ) {
+        $model = TeacherClass::where( 'id', $classId )->first();
+        $model->enrolled_students++;
+        $model->save();
+
+        return redirect('home');
     }
 }

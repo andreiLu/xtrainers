@@ -35,6 +35,10 @@ Route::get('/add-club', 'ClubController@newClub');
 
 Route::get('/all-clubs', 'ClubController@allClubs');
 
+Route::get('subscribe-to-club/{id}', 'ClubController@subscribe');
+
+Route::get('unsubscribe-from-club/{id}', 'ClubController@unsubscribe');
+
 Route::post('/add-class-data',[
 	'as' => 'user.preferences.update',
 	'uses' => 'AddClassController@test'
@@ -55,6 +59,29 @@ Route::post('/add-question-data',[
 	'uses' => 'QuestionController@store'
 ]);
 
+/**
+ * Search routes
+ */
+Route::get('/search', function () {
+    return view( 'search' );
+} );
 
+Route::post('/search',[
+	'as' => 'user.search',
+	'uses' => 'SearchController@handleSearch'
+]);
 
 Route::get('make-trainer/{id}', 'TrainerController@createNewTrainer');
+
+Route::get('trainers-list', 'TrainerController@allTrainers');
+
+Route::get('subscribers-list', 'TrainerController@allSubscribers');
+
+Route::get('dummy-data', 'DummyData@dummyDataView');
+
+Route::post('/dummy-data',[
+    'as' => 'user.dummy.data',
+    'uses' => 'DummyData@doDummyData'
+]);
+
+Route::get('subscribe-to-class/{id}', 'AddClassController@subscribeToClass');

@@ -7,78 +7,88 @@ use Carbon\Carbon;
 use Carbon\CarbonInterval;
 use Xtrainers\TeacherClass;
 use Auth;
-class CalendarController extends Controller {
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
-	public function __construct() {
-		$this->middleware( 'auth' );
-	}
 
-	/**
-	 * @return array
-	 */
-	public function getCalendar() {
-		$startOfWeek = Carbon::now()->startOfWeek()->subDay();
-		$weekDays    = array();
+class CalendarController extends Controller
+{
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
-		for ( $i = 0; $i < Carbon::DAYS_PER_WEEK; $i ++ ) {
-			$weekDay         = $startOfWeek->addDay()->dayOfWeek;
-			$dayData         = array();
-			$dayData['date'] = $startOfWeek->toDateString();
+    /**
+     * @return array
+     */
+    public function getCalendar()
+    {
+        $startOfWeek = Carbon::now()->startOfWeek()->subDay();
+        $weekDays = array();
 
-			switch ( $weekDay ) {
-				case Carbon::SUNDAY:
-					$dayData['day'] = 'Duminica';
-					break;
+        for ($i = 0; $i < Carbon::DAYS_PER_WEEK; $i++) {
+            $weekDay = $startOfWeek->addDay()->dayOfWeek;
+            $dayData = array();
+            $dayData['date'] = $startOfWeek->toDateString();
 
-				case Carbon::MONDAY:
-					$dayData['day'] = 'Luni';
-					break;
+            switch ($weekDay) {
+                case Carbon::SUNDAY:
+                    $dayData['day'] = 'Duminica';
+                    break;
 
-				case Carbon::TUESDAY:
-					$dayData['day'] = 'Marti';
-					break;
+                case Carbon::MONDAY:
+                    $dayData['day'] = 'Luni';
+                    break;
 
-				case Carbon::WEDNESDAY:
-					$dayData['day'] = 'Miercuri';
-					break;
+                case Carbon::TUESDAY:
+                    $dayData['day'] = 'Marti';
+                    break;
 
-				case Carbon::THURSDAY:
-					$dayData['day'] = 'Joi';
-					break;
+                case Carbon::WEDNESDAY:
+                    $dayData['day'] = 'Miercuri';
+                    break;
 
-				case Carbon::FRIDAY:
-					$dayData['day'] = 'Vineri';
-					break;
+                case Carbon::THURSDAY:
+                    $dayData['day'] = 'Joi';
+                    break;
 
-				case Carbon::SATURDAY:
-					$dayData['day'] = 'Sambata';
-					break;
+                case Carbon::FRIDAY:
+                    $dayData['day'] = 'Vineri';
+                    break;
 
-				default:
-					break;
-			}
+                case Carbon::SATURDAY:
+                    $dayData['day'] = 'Sambata';
+                    break;
 
-			$weekDays[] = $dayData;
-		}
+                default:
+                    break;
+            }
 
-		$weekDays = $this->getClassesOfTheDay( $weekDays );
+            $weekDays[] = $dayData;
+        }
 
-		return view( 'calendar', [ 'weekDays' => $weekDays ] );
-	}
+        $weekDays = $this->getClassesOfTheDay($weekDays);
 
-	public function getClassesOfTheDay( $weekDays ) {
-		$classes = TeacherClass::where( 'teacher_id', \Auth::user()->id )->get();
+        return view('calendar',
+            [
+                'weekDays' => $weekDays,
+                'isSubscriber' => 3 === \Auth::user()->roles()->first()->role_id
+            ]);
+    }
 
-		foreach ( $weekDays as $key => $weekDay ) {
-			$weekDay['classes'] = $classes->where( 'day', $weekDay['date'] )->all();
+    public function getClassesOfTheDay($weekDays)
+    {
+        $role = \Auth::user()->roles()->first();
+        $classes = $role->role_id === 3 ? TeacherClass::all() : TeacherClass::where('teacher_id', \Auth::user()->id)->get();
 
-			$weekDays[ $key ] = $weekDay;
-		}
+        foreach ($weekDays as $key => $weekDay) {
+            $weekDay['classes'] = $classes->where('day', $weekDay['date'])->all();
 
-		return $weekDays;
-	}
+            $weekDays[$key] = $weekDay;
+        }
+
+        return $weekDays;
+    }
 }

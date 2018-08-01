@@ -4,24 +4,18 @@
     <div class="main-content">
 
         <div class="center-content">
-            <h1 class="class-headline">Available clubs</h1>
+            <h1 class="class-headline">Available trainers</h1>
 
-            @foreach($clubs as $club)
-                {{--@dd($trainerClubId);--}}
+            @foreach($trainers as $trainer)
                 <div class="club-row">
                     <div class="single-row">
-                        <p>Club name</p>
-                        <p class="club-name">{{$club->name}}</p>
+                        <p>Trainer name</p>
+                        <p class="club-name">{{$trainer->name}}</p>
+                        @if (isset($trainer->club))
+                            <p>Trainer club</p>
+                            <p class="club-name">{{$trainer->club->name}}</p>
+                        @endif
                     </div>
-                    <div class="single-row">
-                        <p>Club address</p>
-                        <p class="club-address">{{$club->address}}</p>
-                    </div>
-                    @if($trainerClubId === $club->id)
-                        <a href="{{url('unsubscribe-from-club/' . $club->id)}}">Unsubscribe from Club</a>
-                    @elseif (!$trainerClubId && !$hasClub)
-                        <a href="{{url('subscribe-to-club/' . $club->id)}}">Subscribe To Club</a>
-                    @endif
                 </div>
             @endforeach
         </div>

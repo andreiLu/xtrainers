@@ -43,10 +43,10 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link custom-button" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link custom-button" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                         @else
 
@@ -55,10 +55,11 @@
                                 <a href="{{url('new-question')}}" class="menu-item">Ask</a>
                                 {{--<router-link class="menu-item" to="/search">search</router-link>--}}
                                 {{--<router-link class="menu-item" to="/calendar">calendar</router-link>--}}
-                                <a href="/calendar" class="menu-item">calendar</a>
-                                <span class="menu-item">nutrition</span>
-                                <span class="menu-item">fit board</span>
-                                <span class="menu-item">membership</span>
+                                <a href="{{url('calendar')}}" class="menu-item">calendar</a>
+                                <a href="{{url('search')}}" class="menu-item">search</a>
+                                {{--<span class="menu-item">nutrition</span>--}}
+                                {{--<span class="menu-item">fit board</span>--}}
+                                {{--<span class="menu-item">membership</span>--}}
                             </div>
 
                             <li class="nav-item dropdown">
@@ -92,6 +93,10 @@
 </html>
 
 <style>
+    .custom-button{
+        color: white!important;
+    }
+
     .header-container {
         background-color: #08122e;
         height: 100px;

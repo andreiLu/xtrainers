@@ -5,15 +5,24 @@
     <div class="main-content">
         <div class="left-section">
             <div class="left-nav-menu">
-                <span class="left-menu-item">Top Stories</span>
-                <span class="left-menu-item">Saved Questions</span>
-                <router-link class="left-menu-item" to="/question">New Questions</router-link>
-                <span class="left-menu-item">Bodybuilding</span>
-                <span class="left-menu-item">Fitness</span>
-                <span class="left-menu-item">Nutrition</span>
-                <span class="left-menu-item">Recuperation</span>
-                <span class="left-menu-item">Sport performance</span>
-                <a href="{{url('/add-class')}}" class="left-menu-item">Add class</a>
+                {{--<span class="left-menu-item">Top Stories</span>--}}
+                {{--<span class="left-menu-item">Saved Questions</span>--}}
+                {{--<a class="left-menu-item" href="{{url('new-question')}}">New Question</a>--}}
+                {{--<span class="left-menu-item">Bodybuilding</span>--}}
+                {{--<span class="left-menu-item">Fitness</span>--}}
+                {{--<span class="left-menu-item">Nutrition</span>--}}
+                {{--<span class="left-menu-item">Recuperation</span>--}}
+                {{--<span class="left-menu-item">Sport performance</span>--}}
+                {{--@if ( ! $isSubscriber )--}}
+                    {{--<a href="{{url('/all-clubs')}}" class="left-menu-item">View all clubs</a>--}}
+                    {{--<a href="{{url('/add-class')}}" class="left-menu-item">Add class</a>--}}
+                {{--@endif--}}
+
+                {{--@if ( $isAdmin )--}}
+                    {{--<a href="{{url('/add-trainer')}}" class="left-menu-item">Add trainer</a>--}}
+                    {{--<a href="{{url('/add-club')}}" class="left-menu-item">Add club</a>--}}
+                {{--@endif--}}
+
             </div>
         </div>
         <div class="week-days">
@@ -28,8 +37,15 @@
 					echo '<div class="single-class">';
 					echo '<p class="class-title">' . $class->title . '</p>';
 					echo '<p class="class-day">' . $class->day . '</p>';
-					echo '<p class="class-time">' . $class->time . '</p>';
-					echo '<p class="class-number">' . $class->students_number . '</p>';
+					echo '<p class="class-time">Start: ' . $class->time . '</p>';
+					echo '<p class="class-time">End: ' . $class->end_time . '</p>';
+					echo '<p class="class-number">Allowed students: ' . $class->students_number . '</p>';
+					echo '<p class="class-number">Enrolled students: ' . $class->enrolled_students . '</p>';
+
+					if ( $isSubscriber ) {
+					    echo '<a href="' . url( 'subscribe-to-class/' . $class->id ) . '">Subscribe to class</a>';
+                    }
+
 					echo '</div>';
                 }
 

@@ -4,6 +4,7 @@ namespace Xtrainers\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Xtrainers\Club;
+use Xtrainers\User;
 
 class ClubController extends Controller
 {
@@ -41,11 +42,38 @@ class ClubController extends Controller
 
         $model->save();
 
-        return redirect('all-clubs' );
+        return redirect('all-clubs');
     }
 
     public function allClubs()
     {
-        return view('all-clubs', array('clubs' => Club::all()));
+//        dd(\Auth::user()->clubs()->first()->get()->first());
+        return view('all-clubs',
+            array(
+                'clubs' => Club::all(),
+                'hasClub' => null !== \Auth::user()->clubs()->first(),
+                'trainerClubId' => null === \Auth::user()->clubs()->first() ?
+                    null :
+                    \Auth::user()->clubs()->first()->id
+            )
+        );
+    }
+
+    public function subscribe($clubId)
+    {
+        $userId = \Auth::user()->id;
+        $user = User::where('id', $userId)->first();
+        $user->clubs()->attach($clubId);
+
+        return redirect('home');
+    }
+
+    public function unsubscribe($clubId)
+    {
+        $userId = \Auth::user()->id;
+        $user = User::where('id', $userId)->first();
+        $user->clubs()->detach($clubId);
+
+        return redirect('home');
     }
 }

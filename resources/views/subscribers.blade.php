@@ -1,32 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="main-content">
+<div class="main-content">
 
-        <div class="center-content">
-            <h1 class="class-headline">Available clubs</h1>
+    <div class="center-content">
+        <h1 class="class-headline">Available trainers</h1>
 
-            @foreach($clubs as $club)
-                {{--@dd($trainerClubId);--}}
-                <div class="club-row">
-                    <div class="single-row">
-                        <p>Club name</p>
-                        <p class="club-name">{{$club->name}}</p>
-                    </div>
-                    <div class="single-row">
-                        <p>Club address</p>
-                        <p class="club-address">{{$club->address}}</p>
-                    </div>
-                    @if($trainerClubId === $club->id)
-                        <a href="{{url('unsubscribe-from-club/' . $club->id)}}">Unsubscribe from Club</a>
-                    @elseif (!$trainerClubId && !$hasClub)
-                        <a href="{{url('subscribe-to-club/' . $club->id)}}">Subscribe To Club</a>
-                    @endif
-                </div>
-            @endforeach
+        @foreach($subscribers as $subscriber)
+        <div class="club-row">
+            <div class="single-row">
+                <p>Trainer name</p>
+                <p class="club-name">{{$subscriber->name}}</p>
+                <span>
+                    <a href="<?php echo e(url('make-trainer/' . $subscriber->id)); ?>" class="make-trainer">Make it trainer</a>
+                </span>
+            </div>
         </div>
-
+        @endforeach
     </div>
+
+</div>
 @endsection
 
 <style>
