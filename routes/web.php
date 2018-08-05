@@ -71,6 +71,11 @@ Route::post('/search',[
 	'uses' => 'SearchController@handleSearch'
 ]);
 
+Route::post('/upload-trainer-docs',[
+	'as' => 'trainer.upload.docs',
+	'uses' => 'HomeController@uploadTrainerDocs'
+]);
+
 Route::get('make-trainer/{id}', 'TrainerController@createNewTrainer');
 
 Route::get('trainers-list', 'TrainerController@allTrainers');

@@ -20,6 +20,7 @@ class ClassesMigration extends Migration {
 			$table->integer( 'students_number' );
 			$table->integer( 'enrolled_students' );
 			$table->string( 'teacher_id' );
+			$table->boolean( 'private' )->default( true );
 			$table->rememberToken();
 			$table->timestamps();
 		} );

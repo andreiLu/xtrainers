@@ -61,6 +61,16 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="user-type" class="col-md-4 col-form-label text-md-right">{{ __('Register as') }}</label>
+
+                            <div id="select-user-type" class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <button class="btn btn-secondary user-type active" type="radio" name="student"> Student </button>
+                                <button class="btn btn-secondary user-type" type="radio" name="trainer"> Trainer </button>
+                                <input type="hidden" name="user_type" value="student">
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

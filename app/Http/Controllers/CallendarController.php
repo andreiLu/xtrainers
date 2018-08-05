@@ -8,87 +8,83 @@ use Carbon\CarbonInterval;
 use Xtrainers\TeacherClass;
 use Auth;
 
-class CalendarController extends Controller
-{
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+class CalendarController extends Controller {
+	/**
+	 * Create a new controller instance.
+	 *
+	 * @return void
+	 */
+	public function __construct() {
+		$this->middleware( 'auth' );
+	}
 
-    /**
-     * @return array
-     */
-    public function getCalendar()
-    {
-        $startOfWeek = Carbon::now()->startOfWeek()->subDay();
-        $weekDays = array();
+	/**
+	 * @return array
+	 */
+	public function getCalendar() {
+		$startOfWeek = Carbon::now()->startOfWeek()->subDay();
+		$weekDays    = array();
 
-        for ($i = 0; $i < Carbon::DAYS_PER_WEEK; $i++) {
-            $weekDay = $startOfWeek->addDay()->dayOfWeek;
-            $dayData = array();
-            $dayData['date'] = $startOfWeek->toDateString();
+		for ( $i = 0; $i < Carbon::DAYS_PER_WEEK; $i ++ ) {
+			$weekDay         = $startOfWeek->addDay()->dayOfWeek;
+			$dayData         = array();
+			$dayData['date'] = $startOfWeek->toDateString();
 
-            switch ($weekDay) {
-                case Carbon::SUNDAY:
-                    $dayData['day'] = 'Duminica';
-                    break;
+			switch ( $weekDay ) {
+				case Carbon::SUNDAY:
+					$dayData['day'] = 'Duminica';
+					break;
 
-                case Carbon::MONDAY:
-                    $dayData['day'] = 'Luni';
-                    break;
+				case Carbon::MONDAY:
+					$dayData['day'] = 'Luni';
+					break;
 
-                case Carbon::TUESDAY:
-                    $dayData['day'] = 'Marti';
-                    break;
+				case Carbon::TUESDAY:
+					$dayData['day'] = 'Marti';
+					break;
 
-                case Carbon::WEDNESDAY:
-                    $dayData['day'] = 'Miercuri';
-                    break;
+				case Carbon::WEDNESDAY:
+					$dayData['day'] = 'Miercuri';
+					break;
 
-                case Carbon::THURSDAY:
-                    $dayData['day'] = 'Joi';
-                    break;
+				case Carbon::THURSDAY:
+					$dayData['day'] = 'Joi';
+					break;
 
-                case Carbon::FRIDAY:
-                    $dayData['day'] = 'Vineri';
-                    break;
+				case Carbon::FRIDAY:
+					$dayData['day'] = 'Vineri';
+					break;
 
-                case Carbon::SATURDAY:
-                    $dayData['day'] = 'Sambata';
-                    break;
+				case Carbon::SATURDAY:
+					$dayData['day'] = 'Sambata';
+					break;
 
-                default:
-                    break;
-            }
+				default:
+					break;
+			}
 
-            $weekDays[] = $dayData;
-        }
+			$weekDays[] = $dayData;
+		}
 
-        $weekDays = $this->getClassesOfTheDay($weekDays);
+		$weekDays = $this->getClassesOfTheDay( $weekDays );
 
-        return view('calendar',
-            [
-                'weekDays' => $weekDays,
-                'isSubscriber' => 3 === \Auth::user()->roles()->first()->role_id
-            ]);
-    }
+		return view( 'calendar',
+			[
+				'weekDays'     => $weekDays,
+				'isSubscriber' => 3 === \Auth::user()->roles()->first()->role_id,
+			] );
+	}
 
-    public function getClassesOfTheDay($weekDays)
-    {
-        $role = \Auth::user()->roles()->first();
-        $classes = $role->role_id === 3 ? TeacherClass::all() : TeacherClass::where('teacher_id', \Auth::user()->id)->get();
+	public function getClassesOfTheDay( $weekDays ) {
+		$role    = \Auth::user()->roles()->first();
+		$classes = $role->role_id === 3 ? TeacherClass::all() : TeacherClass::where( 'teacher_id', \Auth::user()->id )->get();
 
-        foreach ($weekDays as $key => $weekDay) {
-            $weekDay['classes'] = $classes->where('day', $weekDay['date'])->all();
+		foreach ( $weekDays as $key => $weekDay ) {
+			$weekDay['classes'] = $classes->where( 'day', $weekDay['date'] )->all();
 
-            $weekDays[$key] = $weekDay;
-        }
+			$weekDays[ $key ] = $weekDay;
+		}
 
-        return $weekDays;
-    }
+		return $weekDays;
+	}
 }
