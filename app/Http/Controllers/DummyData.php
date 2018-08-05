@@ -66,7 +66,8 @@ class DummyData extends Controller
                 $user = User::create( array(
                     'name' =>$x . " " . $this->GetDummySubscribers(),
                     'email' => 'dumy_subscriber' . $x . '@yahoo.com',
-                    'password' => bcrypt( '123456' )
+                    'password' => bcrypt( '123456' ),
+					'accepted' => true
                 ) );
 
                 $user->roles()->attach(3);
@@ -79,7 +80,8 @@ class DummyData extends Controller
                 $user = User::create( array(
                     'name' => $x . " " . $this->GetDummyTrainers(),
                     'email' => 'dumy_trainer' . $x . '@yahoo.com',
-                    'password' => bcrypt( '123456' )
+                    'password' => bcrypt( '123456' ),
+					'accepted' => false
                 ) );
 
                 $user->roles()->attach(2);
