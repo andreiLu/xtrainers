@@ -54,6 +54,8 @@ class TrainerController extends Controller {
 
 	public function createNewTrainer( $id ) {
 		$user = User::find( $id );
+		$user->accepted = true;
+		$user->save();
 		$user->roles()->sync( array( 2 ) );
 
 		return redirect( 'add-trainer' );
@@ -62,7 +64,7 @@ class TrainerController extends Controller {
 	public function allTrainers() {
 		$users = User::whereHas( 'roles', function ( $query ) {
 			$query->where( 'roles.role_id', '=', 1 )->orWhere( 'roles.role_id', '=', 2 );
-		} )->get();
+		} )->where( 'accepted', true )->get();
 
 		foreach ( $users as $key => $user ) {
 			$clubObj       = DB::table( 'club_user' )->where( 'user_id', $user->id )->first();
