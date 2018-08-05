@@ -4,28 +4,31 @@
     <div class="main-content">
 
         <div class="center-content">
+            <h1>Class details</h1>
 
-            <h1 style="padding: 15px 0 15px 12px;">Available users</h1>
+            <p>Class Title</p>
+            <p class="class-headline">{{$class->title}}</p>
 
-            <div class="users-list">
-                @foreach ($users as $user)
-                    <div class="user-data">
-                        <div class="row user-name">{{$user->name}}</div>
-                        <div class="row user-documents">
-                            @foreach( $user->assets as $key => $asset )
-                                <div class="row document-name">
-                                    <a href="{{$asset}}">Ducument {{$key + 1}}</a>
-                                </div>
-                            @endforeach
-                        </div>
-                        <div class="row">
-                            <a href="{{url('make-trainer/' . $user->id)}}" class="btn btn-secondary">Make it trainer</a>
-                            <a href="{{url('reject-trainer/' . $user->id)}}" class="btn btn-danger">Reject request</a>
-                        </div>
-                    </div>
-                @endforeach
+            <p>Class Category</p>
+            <p>{{$class->category}}</p>
 
-            </div>
+            <p>Class Intesity</p>
+            <p>{{$class->intensity}}</p>
+
+            <p>Class Day</p>
+            <p>{{$class->day}}</p>
+
+            <p>Class Start Time</p>
+            <p>{{$class->time}}</p>
+
+            <p>Class End Time</p>
+            <p>{{$class->end_time}}</p>
+
+            @if ($class->allow_online_booking)
+                <a href="{{url( 'subscribe-to-class/' . $class->id )}}">Subscribe to class</a>
+            @endif
+
+{{--            {{dd($class)}}--}}
 
         </div>
 
@@ -34,15 +37,9 @@
 
 <style>
 
-    .document-name {
-        font-size: 25px;
-        display: block!important;
-        padding: 20px;
-    }
-
-    .document-name a {
-        color: white;
-        display: block!important;
+    .submit-button {
+        display: block !important;
+        margin-top: 20px;
     }
 
     .main-content {
@@ -107,16 +104,8 @@
         font-size: 16px;
     }
 
-    .user-data {
-        padding: 30px;
-    }
-
-    .user-name, .user-role {
-        padding: 15px 0 15px 12px;
-    }
-
-    .make-trainer {
-        /*display:block;*/
+    .input-title {
+        display: block;
         width: 300px;
         padding: 15px 0 15px 12px;
         font-family: "Arvo";

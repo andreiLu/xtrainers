@@ -3,7 +3,7 @@
 namespace Xtrainers\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Storage;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller {
 	/**
@@ -57,11 +57,19 @@ class HomeController extends Controller {
 	public function uploadTrainerDocs( Request $request ) {
 		$file     = $request->file( 'asset' );
 		$filename = 'document_' . $file->getClientOriginalName() . '.' . $file->getClientOriginalExtension();
-		$path     = $file->storeAs( 'assets/user_' . \Auth::user()->id, $filename );
+		$path     = $file->storeAs( 'public/assets/user_' . \Auth::user()->id, $filename );
+
 		return redirect( 'home' );
 	}
 
 	public function getTrainerFiles() {
-		return Storage::allFiles( 'assets/user_' . \Auth::user()->id );
+		$files     = Storage::allFiles( 'public/assets/user_' . \Auth::user()->id );
+		$reswponse = array();
+
+		foreach ( $files as $file ) {
+			$reswponse[] = Storage::url( $file );
+		}
+
+		return $reswponse;
 	}
 }

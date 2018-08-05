@@ -16,11 +16,35 @@
                 {{ Form::input('time', 'class_time', '', ['class' => 'input-title']) }}
                 {{ Form::label('end_time', 'Class End Time', ['class' => 'custom-label']) }}
                 {{ Form::input('time', 'class_end_time', '', ['class' => 'input-title']) }}
+                {{ Form::label('unbook_time', 'Time to cancel the subscription to the class. Must be lower then the class start hour.', ['class' => 'custom-label']) }}
+                {{ Form::input('time', 'unbook_time', '', ['class' => 'input-title']) }}
                 {{ Form::label('class_students_number', 'Max allowed students', ['class' => 'custom-label']) }}
                 {{ Form::input('number', 'class_students_number', '', ['class' => 'input-title']) }}
+                {{ Form::label('min_students_number', 'Min required students', ['class' => 'custom-label']) }}
+                {{ Form::input('number', 'min_students_number', '3', ['class' => 'input-title']) }}
                 {{ Form::label('class_type', 'Class Type', ['class' => 'custom-label']) }}
                 {{ Form::select('class_type', array( 'Public' , 'Private', )), ['class' => 'custom-label'] }}
-                {{ Form::submit('Submit!', ['class' => 'submit-button'])  }}
+                {{ Form::label('class_intensity', 'Class Intensity', ['class' => 'custom-label']) }}
+                {{ Form::select('class_intensity', array( '1' , '2', '3', '4', '5' )), ['class' => 'custom-label'] }}
+                {{ Form::label('class_category', 'Class Category', ['class' => 'custom-label']) }}
+                {{ Form::select('class_category',
+                    array(
+                        'aerobic' => 'Aerobic',
+                        'kickboxing' => 'Kickboxing',
+                        'bodybuilding' => 'Bodybuilding',
+                        'tabata' => 'tabata',
+                        'trx' => 'TRX'
+                    )
+                ), ['class' => 'custom-label'] }}
+                {{ Form::label('allow_online_booking', 'Allow users to subscribe online to this class', ['class' => 'custom-label']) }}
+                {{ Form::select('allow_online_booking',
+                    array(
+                        'allow' => 'YES',
+                        'deny' => 'NO'
+                    )
+                ), ['class' => 'custom-label'] }}
+
+                {{ Form::submit('Submit!', ['class' => 'btn btn-primary submit-button'])  }}
                 {{ Form::close() }}
             </div>
         </div>
@@ -29,6 +53,11 @@
 @endsection
 
 <style>
+
+    .submit-button {
+        display: block !important;
+        margin-top: 20px;
+    }
 
     .main-content {
         margin: 0 !important;

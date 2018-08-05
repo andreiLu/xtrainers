@@ -30,16 +30,16 @@
         </div>
         <div class="right-section main-section">
             <div class="story-section">
-                @if ( ! $isTrainerAccepted )
+                @if ( $isTrainer && ! $isTrainerAccepted )
                     <h1>Upload here the documents which can provide that you're an eligible trainer</h1>
                     <h3>The administrators will review them shortly and you will be informed if your request has been approved</h3>
 
                     <form action="{{ route('trainer.upload.docs') }}" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
-                        Document title:
-                        <br/>
-                        <input type="text" name="title"/>
-                        <br/><br/>
+                        {{--Document title:--}}
+                        {{--<br/>--}}
+                        {{--<input type="text" name="title"/>--}}
+                        {{--<br/><br/>--}}
                         Document:
                         <br/>
                         <input type="file" name="asset"/>
@@ -49,10 +49,9 @@
 
                     <h1>Uploaded files</h1>
 
-                    @foreach($trainerFiles as $file)
+                    @foreach($trainerFiles as $key => $file)
                         <div class="row">
-                            <img src="{{asset($file)}}">
-                            <img src="{{url($file)}}">
+                            <a class="document-name" href="{{$file}}">File {{$key + 1}} </a>
                         </div>
 
                     @endforeach
@@ -65,6 +64,11 @@
 @endsection
 
 <style>
+
+    .document-name {
+        color: white;
+        font-size: 25px;
+    }
 
     .main-content {
         margin: 0 !important;

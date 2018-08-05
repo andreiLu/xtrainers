@@ -114,4 +114,8 @@
         max-height: 100px;
     }
 
+    .navbarDropdown{
+        color: white;
+        font-size: 20px;
+    }
 </style>

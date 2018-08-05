@@ -7,6 +7,7 @@ use Xtrainers\Club;
 use Xtrainers\User;
 use Xtrainers\Role;
 use DB;
+use Illuminate\Support\Facades\Storage;
 
 class TrainerController extends Controller {
 	/**
@@ -34,8 +35,19 @@ class TrainerController extends Controller {
 
 	public function getUsersData() {
 		$users = User::whereHas( 'roles', function ( $query ) {
-			$query->where( 'name', '=', 'subscriber' );
-		} )->get();
+			$query->where( 'name', '=', 'trainer' );
+		} )->where( 'accepted', false )->get();
+
+		foreach ( $users as $user ) {
+			$files = Storage::allFiles( 'public/assets/user_' . $user->id );
+			$urls = array();
+
+			foreach ($files as $file) {
+				$urls[] = Storage::url( $file );
+			}
+
+			$user->assets = $urls;
+		}
 
 		return $users;
 	}
@@ -70,5 +82,12 @@ class TrainerController extends Controller {
 		return view( 'subscribers', array( 'subscribers' => $users ) );
 	}
 
+	public function rejectTrainer( $id ) {
+		$user = User::find( $id );
+		$user->accepted = true;
+		$user->save();
+		$user->roles()->sync( array( 3 ) );
 
+		return redirect( 'add-trainer' );
+	}
 }

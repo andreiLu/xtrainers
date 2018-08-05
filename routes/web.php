@@ -78,6 +78,8 @@ Route::post('/upload-trainer-docs',[
 
 Route::get('make-trainer/{id}', 'TrainerController@createNewTrainer');
 
+Route::get('reject-trainer/{id}', 'TrainerController@rejectTrainer');
+
 Route::get('trainers-list', 'TrainerController@allTrainers');
 
 Route::get('subscribers-list', 'TrainerController@allSubscribers');
@@ -90,3 +92,5 @@ Route::post('/dummy-data',[
 ]);
 
 Route::get('subscribe-to-class/{id}', 'AddClassController@subscribeToClass');
+
+Route::get('single-class/{id}', 'AddClassController@singleClass');

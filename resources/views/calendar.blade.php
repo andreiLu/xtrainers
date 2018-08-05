@@ -34,7 +34,8 @@
                 echo '<p class="week-date">' . $day['date'] . '</p>';
 
                 foreach ( $day['classes'] as $class ) {
-					echo '<div class="single-class">';
+                	$extra = $class->min_students_number < $class->students_number ? 'below-enrolled' : '' ;
+					echo '<div class="single-class ' . $extra . ' ">';
 					echo '<p class="class-title">' . $class->title . '</p>';
 					echo '<p class="class-day">' . $class->day . '</p>';
 					echo '<p class="class-time">Start: ' . $class->time . '</p>';
@@ -45,6 +46,8 @@
 					if ( $isSubscriber ) {
 					    echo '<a href="' . url( 'subscribe-to-class/' . $class->id ) . '">Subscribe to class</a>';
                     }
+
+                    echo '<a href="single-class/' . $class->id . '">View more details</a>';
 
 					echo '</div>';
                 }
@@ -59,6 +62,10 @@
 @endsection
 
 <style>
+
+    .below-enrolled{
+        opacity: 0.5;
+    }
 
     .main-content{
         margin: 0!important;
