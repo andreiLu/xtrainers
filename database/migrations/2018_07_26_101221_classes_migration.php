@@ -26,6 +26,8 @@ class ClassesMigration extends Migration {
 			$table->string( 'category' );
 			$table->boolean( 'private' )->default( true );
 			$table->boolean( 'allow_online_booking' )->default( true );
+            $table->integer( 'class_price' );
+			$table->tinyInteger( 'class_currency' );
 			$table->rememberToken();
 			$table->timestamps();
 		} );

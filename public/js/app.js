@@ -13889,23 +13889,23 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
 // const User = {template: '<div>{{ $route.params.username }}</div>'}
 
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
-	mode: 'history',
-	base: __dirname,
-	routes: [
-		// {path: '/', component: Home},
-		// {path: '/about', component: require('./components/TestRouterComponent')},
-		// {
-		//     path: '/users', component: Users,
-		//     children: [
-		//         {path: ':username', name: 'user', component: User}
-		//     ]
-		// },
-		// {path: '/ask-question', component: require('./components/NewQuestionComponent')},
-		// {path: '/home', component: require('./components/HomeComponent')},
-		// {path: '/search', component: require('./components/SearchComponent')},
-		// {path: '/question', component: require('./components/QuestionsListComponent')},
-		// {path: '/calendar', component: require('./components/CalendarComponent')},
-	]
+    mode: 'history',
+    base: __dirname,
+    routes: [
+        // {path: '/', component: Home},
+        // {path: '/about', component: require('./components/TestRouterComponent')},
+        // {
+        //     path: '/users', component: Users,
+        //     children: [
+        //         {path: ':username', name: 'user', component: User}
+        //     ]
+        // },
+        // {path: '/ask-question', component: require('./components/NewQuestionComponent')},
+        // {path: '/home', component: require('./components/HomeComponent')},
+        // {path: '/search', component: require('./components/SearchComponent')},
+        // {path: '/question', component: require('./components/QuestionsListComponent')},
+        // {path: '/calendar', component: require('./components/CalendarComponent')},
+    ]
 });
 
 //new Vue({
@@ -13913,11 +13913,29 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
 //    el: '#app'
 //})
 
-
+/**
+ * Document ready actions
+ */
 $(document).ready(function () {
-	$('.user-type').on('click', function () {
-		$('input[name="user_type"]').val($(this).attr('name'));
-	});
+    $('.user-type').on('click', function () {
+        $('input[name="user_type"]').val($(this).attr('name'));
+    });
+
+    /**
+     * Hide and show currency options
+     */
+    $('#class_type').on('change', function () {
+        if ($(this).val() === 'credits') {
+            $('.credits-price').show();
+            $('.money-price').hide();
+        } else if ($(this).val() === 'money') {
+            $('.credits-price').hide();
+            $('.money-price').show();
+        } else {
+            $('.credits-price').hide();
+            $('.money-price').hide();
+        }
+    });
 });
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, "/"))
 
@@ -13936,9 +13954,9 @@ window.Popper = __webpack_require__(3).default;
  */
 
 try {
-    window.$ = window.jQuery = __webpack_require__(4);
+  window.$ = window.jQuery = __webpack_require__(4);
 
-    __webpack_require__(16);
+  __webpack_require__(16);
 } catch (e) {}
 
 /**
@@ -13960,9 +13978,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 var token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
-    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 } else {
-    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
 /***/ }),

@@ -6,29 +6,79 @@
         <div class="center-content">
             <h1>Class details</h1>
 
-            <p>Class Title</p>
-            <p class="class-headline">{{$class->title}}</p>
+            <div class="row class-detail">
+                <div class="col-md-3"></div>
+                <div class="col-md-1"></div>
+            </div>
 
-            <p>Class Category</p>
-            <p>{{$class->category}}</p>
+            <div class="row class-detail">
+                <div class="col-md-3"></div>
+                <div class="col-md-1"></div>
+            </div>
 
-            <p>Class Intesity</p>
-            <p>{{$class->intensity}}</p>
+            <div class="row class-detail">
+                <div class="col-md-3">Class Title</div>
+                <div class="col-md-2">{{$class->title}}</div>
+            </div>
 
-            <p>Class Day</p>
-            <p>{{$class->day}}</p>
+            <div class="row class-detail">
+                <div class="col-md-3">Class Category</div>
+                <div class="col-md-2">{{$class->category}}</div>
+            </div>
 
-            <p>Class Start Time</p>
-            <p>{{$class->time}}</p>
+            <div class="row class-detail">
+                <div class="col-md-3">Class Intensity</div>
+                <div class="col-md-2">{{$class->intensity}}</div>
+            </div>
 
-            <p>Class End Time</p>
-            <p>{{$class->end_time}}</p>
+            <div class="row class-detail">
+                <div class="col-md-3">Class Day</div>
+                <div class="col-md-2">{{$class->day}}</div>
+            </div>
 
-            @if ($class->allow_online_booking)
-                <a href="{{url( 'subscribe-to-class/' . $class->id )}}">Subscribe to class</a>
+            <div class="row class-detail">
+                <div class="col-md-3">Class Start Time</div>
+                <div class="col-md-2">{{$class->time}}</div>
+            </div>
+
+            <div class="row class-detail">
+                <div class="col-md-3">Class End Time</div>
+                <div class="col-md-2">{{$class->end_time}}</div>
+            </div>
+
+            <div class="row class-detail">
+                <div class="col-md-3">Class Type</div>
+                <div class="col-md-2">{{$class->class_type}}</div>
+            </div>
+
+            <div class="row class-detail">
+                <div class="col-md-3">Class Price</div>
+                <div class="col-md-2">{{$class->class_price}}</div>
+            </div>
+
+            @if ($class->class_currency)
+                <div class="row class-detail">
+                    <div class="col-md-4">{{$class->class_currency === 'credits' ? 'Credits' : 'Lei'}}</div>
+                </div>
             @endif
 
-{{--            {{dd($class)}}--}}
+            <div class="row class-detail">
+                <div class="col-md-3">Require Active Subscription</div>
+                <div class="col-md-1">{{$class->require_active_subscription ? 'Yes' : 'No'}}</div>
+            </div>
+
+            <div class="row class-detail">
+                <div class="col-md-3">Enrolled Students</div>
+                <div class="col-md-1">{{$class->enrolled_students}}</div>
+            </div>
+
+            @if ($class->allow_online_booking)
+                <div class="row class-detail">
+                    <div class="col-md-4">
+                        <a class="subscribe-to-class" href="{{url( 'subscribe-to-class/' . $class->id )}}">Subscribe to class</a>
+                    </div>
+                </div>
+            @endif
 
         </div>
 
@@ -36,6 +86,15 @@
 @endsection
 
 <style>
+
+    .subscribe-to-class{
+        color: white;
+        font-size: 20px;
+    }
+
+    .class-detail{
+        padding: 10px;
+    }
 
     .submit-button {
         display: block !important;

@@ -22,8 +22,8 @@
                 {{ Form::input('number', 'class_students_number', '', ['class' => 'input-title']) }}
                 {{ Form::label('min_students_number', 'Min required students', ['class' => 'custom-label']) }}
                 {{ Form::input('number', 'min_students_number', '3', ['class' => 'input-title']) }}
-                {{ Form::label('class_type', 'Class Type', ['class' => 'custom-label']) }}
-                {{ Form::select('class_type', array( 'Public' , 'Private', )), ['class' => 'custom-label'] }}
+                {{ Form::label('class_private', 'Class Type', ['class' => 'custom-label']) }}
+                {{ Form::select('class_private', array( 'Public' , 'Private', )), ['class' => 'custom-label'] }}
                 {{ Form::label('class_intensity', 'Class Intensity', ['class' => 'custom-label']) }}
                 {{ Form::select('class_intensity', array( '1' , '2', '3', '4', '5' )), ['class' => 'custom-label'] }}
                 {{ Form::label('class_category', 'Class Category', ['class' => 'custom-label']) }}
@@ -44,6 +44,29 @@
                     )
                 ), ['class' => 'custom-label'] }}
 
+                {{ Form::label('class_type', 'Choose class price', ['class' => 'custom-label']) }}
+                {{ Form::select('class_type',
+                    array(
+                        'free' => 'Free',
+                        'credits' => 'Credits',
+                        'money' => 'Money'
+                    )
+                ), ['class' => 'custom-label'] }}
+
+                <div class="money-price">
+                    {{ Form::label('class_price', 'Lei', ['class' => 'custom-label']) }}
+                    {{ Form::input('number', 'class_price' ), ['class' => 'custom-label'] }}
+                </div>
+
+                <div class="credits-price">
+                    {{ Form::label('class_price', 'Credits', ['class' => 'custom-label']) }}
+                    {{ Form::input('number', 'class_price' ), ['class' => 'custom-label'] }}
+                </div>
+
+                {{ Form::label('require_active_subscription', 'Require an active subscription', ['class' => 'custom-label']) }}
+                {{ Form::checkbox('require_active_subscription') }}
+
+
                 {{ Form::submit('Submit!', ['class' => 'btn btn-primary submit-button'])  }}
                 {{ Form::close() }}
             </div>
@@ -53,6 +76,16 @@
 @endsection
 
 <style>
+
+    #class_type{
+        padding: 10px;
+        z-index: 100;
+        border-radius: 5px;
+    }
+
+    .money-price, .credits-price {
+        display: none;
+    }
 
     .submit-button {
         display: block !important;

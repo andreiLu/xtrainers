@@ -36,6 +36,17 @@
                 foreach ( $day['classes'] as $class ) {
                 	$extra = $class->min_students_number < $class->students_number ? 'below-enrolled' : '' ;
 					echo '<div class="single-class ' . $extra . ' ">';
+
+					if ( $class->require_active_subscription ) {
+
+						echo '  <div class="lock-icon icon-lock" style="clear: left; float: left">
+                            <div class="lock-top-1" style="background-color: #2CC3B5"></div>
+                            <div class="lock-top-2"></div>
+                            <div class="lock-body" style="background-color: #2CC3B5"></div>
+                            <div class="lock-hole"></div>
+                            </div>';
+                    }
+
 					echo '<p class="class-title">' . $class->title . '</p>';
 					echo '<p class="class-day">' . $class->day . '</p>';
 					echo '<p class="class-time">Start: ' . $class->time . '</p>';
@@ -50,6 +61,7 @@
                     echo '<a href="single-class/' . $class->id . '">View more details</a>';
 
 					echo '</div>';
+
                 }
 
                 echo '</div>';
@@ -62,6 +74,80 @@
 @endsection
 
 <style>
+    body {
+        background-color: #151517;
+    }
+
+    .lock-icon{
+        position: absolute;
+        right: 0;
+    }
+
+    .icon-lock {
+        width: 48px;
+        height: 48px;
+        /*position: relative;*/
+        overflow: hidden;
+        margin-left: 25px;
+        margin-bottom: 25px;
+        display: block;
+    }
+
+    .icon-lock .lock-top-1 {
+        width: 40%;
+        height: 40%;
+        position: absolute;
+        left: 50%;
+        margin-left: -20%;
+        top: 14%;
+        background-color: #000;
+        border-radius: 40%;
+    }
+
+    .icon-lock .lock-top-2 {
+        width: 24%;
+        height: 40%;
+        position: absolute;
+        left: 50%;
+        margin-left: -12%;
+        top: 22%;
+        background-color: #151517;
+        border-radius: 25%;
+    }
+
+    .icon-lock .lock-body {
+        width: 60%;
+        height: 48%;
+        position: absolute;
+        left: 50%;
+        margin-left: -30%;
+        bottom: 11%;
+        background-color: #000;
+        border-radius: 15%;
+    }
+
+    .icon-lock .lock-hole {
+        width: 16%;
+        height: 16%;
+        position: absolute;
+        left: 50%;
+        margin-left: -8%;
+        top: 51%;
+        border-radius: 100%;
+        background-color: #151517;
+    }
+
+    .icon-lock .lock-hole:after {
+        content: "";
+        width: 43%;
+        height: 78%;
+        position: absolute;
+        left: 50%;
+        margin-left: -20%;
+        top: 100%;
+        background-color: inherit;
+    }
+
 
     .below-enrolled{
         opacity: 0.5;
@@ -112,6 +198,7 @@
     }
 
     .single-class {
+        position: relative;
         border: 1px dashed white;
         padding: 5px;
         margin-bottom: 10px;
